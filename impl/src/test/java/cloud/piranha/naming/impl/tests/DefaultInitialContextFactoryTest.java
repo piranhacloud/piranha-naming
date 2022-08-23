@@ -25,20 +25,27 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+package cloud.piranha.naming.impl.tests;
+
+import cloud.piranha.naming.impl.DefaultInitialContextFactory;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
 /**
- * The Piranha Naming - Thread module.
- * 
- * <p>
- *  This module delivers the thread implementation needed for JNDI integration
- *  in web applications.
- * </p>
- * 
+ * The JUnit tests for the DefaultInitialContextFactory class.
+ *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-module cloud.piranha.naming.thread {
-    
-    exports cloud.piranha.naming.thread;
-    opens cloud.piranha.naming.thread;
-    requires transitive java.naming;
+class DefaultInitialContextFactoryTest {
+
+    /**
+     * Test getInitialContext method.
+     * 
+     * @throws Exception when a serious error occurs.
+     */
+    @Test
+    void testGetInitialContext() throws Exception {
+        DefaultInitialContextFactory factory = new DefaultInitialContextFactory();
+        assertNotNull(factory.getInitialContext(null));
+    }
 }

@@ -25,20 +25,54 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+package cloud.piranha.naming.thread;
+
+import java.util.HashMap;
+import java.util.Hashtable;
+import javax.naming.Context;
+import javax.naming.NamingException;
+import javax.naming.spi.InitialContextFactory;
 
 /**
- * The Piranha Naming - Thread module.
- * 
- * <p>
- *  This module delivers the thread implementation needed for JNDI integration
- *  in web applications.
- * </p>
- * 
+ * The Thread InitialContextFactory.
+ *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-module cloud.piranha.naming.thread {
-    
-    exports cloud.piranha.naming.thread;
-    opens cloud.piranha.naming.thread;
-    requires transitive java.naming;
+public class ThreadInitialContextFactory implements InitialContextFactory {
+
+    /**
+     * Stores the initial contexts by thread id.
+     */
+    private static final HashMap<Long, Context> INITIAL_CONTEXTS = new HashMap<>(1);
+
+    /**
+     * Get the initial context.
+     * 
+     * @return the initial context.
+     * @param environment the environment.
+     * @throws NamingException when a naming error occurs.
+     */
+    @Override
+    public Context getInitialContext(Hashtable<?, ?> environment) throws NamingException {
+        if (INITIAL_CONTEXTS.containsKey(Thread.currentThread().getId())) {
+            return INITIAL_CONTEXTS.get(Thread.currentThread().getId());
+        }
+        throw new NamingException("Initial context not available for thread: " + Thread.currentThread());
+    }
+
+    /**
+     * Remove the initial context.
+     */
+    public static void removeInitialContext() {
+        INITIAL_CONTEXTS.remove(Thread.currentThread().getId());
+    }
+
+    /**
+     * Set the initial context.
+     *
+     * @param initialContext the initial context.
+     */
+    public static void setInitialContext(Context initialContext) {
+        INITIAL_CONTEXTS.put(Thread.currentThread().getId(), initialContext);
+    }
 }

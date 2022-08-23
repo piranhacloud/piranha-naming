@@ -25,20 +25,30 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+package cloud.piranha.naming.impl.tests;
+
+import cloud.piranha.naming.impl.DefaultBindingNamingEnumeration;
+import java.util.ArrayList;
+import javax.naming.NamingException;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
 
 /**
- * The Piranha Naming - Thread module.
- * 
- * <p>
- *  This module delivers the thread implementation needed for JNDI integration
- *  in web applications.
- * </p>
+ * The JUnit tests for the DefaultBindingNamingEnumeration class.
  * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-module cloud.piranha.naming.thread {
-    
-    exports cloud.piranha.naming.thread;
-    opens cloud.piranha.naming.thread;
-    requires transitive java.naming;
+class DefaultBindingNamingEnumerationTest {
+   
+    /**
+     * Test checkClosed method.
+     * 
+     * @throws Exception when a serious error occurs.
+     */
+    @Test
+    void testCheckClosed() throws Exception {
+        DefaultBindingNamingEnumeration enumeration = new DefaultBindingNamingEnumeration(new ArrayList<>());
+        enumeration.close();
+        assertThrows(NamingException.class, enumeration::close);
+    }
 }

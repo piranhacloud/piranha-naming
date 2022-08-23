@@ -25,20 +25,34 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+package cloud.piranha.naming.impl;
+
+import java.util.Hashtable;
+import javax.naming.Context;
+import javax.naming.NamingException;
+import javax.naming.spi.InitialContextFactory;
 
 /**
- * The Piranha Naming - Thread module.
- * 
- * <p>
- *  This module delivers the thread implementation needed for JNDI integration
- *  in web applications.
- * </p>
- * 
+ * The default InitialContextFactory.
+ *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-module cloud.piranha.naming.thread {
+public class DefaultInitialContextFactory implements InitialContextFactory {
+
+    /**
+     * Stores the initial context.
+     */
+    private static final DefaultInitialContext INITIAL_CONTEXT = new DefaultInitialContext();
     
-    exports cloud.piranha.naming.thread;
-    opens cloud.piranha.naming.thread;
-    requires transitive java.naming;
+    /**
+     * Get the initial context.
+     * 
+     * @return the initial context.
+     * @param environment the environment.
+     * @throws NamingException when a naming error occurs.
+     */
+    @Override
+    public Context getInitialContext(Hashtable<?, ?> environment) throws NamingException {
+        return INITIAL_CONTEXT;
+    }
 }

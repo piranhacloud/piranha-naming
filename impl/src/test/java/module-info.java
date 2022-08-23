@@ -27,18 +27,12 @@
  */
 
 /**
- * The Piranha Naming - Thread module.
- * 
- * <p>
- *  This module delivers the thread implementation needed for JNDI integration
- *  in web applications.
- * </p>
- * 
- * @author Manfred Riem (mriem@manorrock.com)
+ * The module-info file for tests.
  */
-module cloud.piranha.naming.thread {
-    
-    exports cloud.piranha.naming.thread;
-    opens cloud.piranha.naming.thread;
-    requires transitive java.naming;
+module cloud.piranha.naming.impl.tests {
+    exports cloud.piranha.naming.impl.tests;
+    opens cloud.piranha.naming.impl.tests;
+    requires cloud.piranha.naming.impl;
+    requires org.junit.jupiter.api;
+    requires org.junit.jupiter.engine;
 }

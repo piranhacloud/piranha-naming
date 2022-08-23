@@ -25,20 +25,29 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+package cloud.piranha.naming.impl.tests;
+
+import cloud.piranha.naming.impl.DefaultNameParser;
+import javax.naming.Name;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
 
 /**
- * The Piranha Naming - Thread module.
- * 
- * <p>
- *  This module delivers the thread implementation needed for JNDI integration
- *  in web applications.
- * </p>
- * 
+ * The JUnit tests for the DefaultNameParser class.
+ *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-module cloud.piranha.naming.thread {
-    
-    exports cloud.piranha.naming.thread;
-    opens cloud.piranha.naming.thread;
-    requires transitive java.naming;
+class DefaultNameParserTest {
+
+    /**
+     * Test parse method.
+     * 
+     * @throws Exception when an error occurs.
+     */
+    @Test
+    void testParse() throws Exception {
+        DefaultNameParser parser = new DefaultNameParser();
+        Name result = parser.parse("MyName");
+        assertNotNull(result);
+    }
 }
