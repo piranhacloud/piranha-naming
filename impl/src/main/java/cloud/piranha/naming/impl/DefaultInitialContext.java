@@ -381,7 +381,7 @@ public class DefaultInitialContext implements Context {
             } else {
                 throw new NamingException("Name " + name + " is not a named context");
             }
-        } else if (bindings.containsKey(name) && bindings.get(name) instanceof DefaultInitialContext) {
+        } else if (bindings.containsKey(name) && bindings.get(name) instanceof DefaultInitialContext defaultInitialContext) {
             contextMap = (DefaultInitialContext) bindings.get(name);
         } else {
             contextMap = null;
