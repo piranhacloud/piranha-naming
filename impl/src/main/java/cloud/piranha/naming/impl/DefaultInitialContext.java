@@ -284,7 +284,7 @@ public class DefaultInitialContext implements Context {
     @Override
     public Hashtable<?, ?> getEnvironment() throws NamingException {
         checkClosed();
-        return new Hashtable();
+        return new Hashtable<>();
     }
 
     /**
