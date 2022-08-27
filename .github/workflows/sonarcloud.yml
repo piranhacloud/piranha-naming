@@ -18,5 +18,5 @@ jobs:
       run: |
         mvn -B -ntp install verify site \
         sonar:sonar -Dsonar.projectKey=piranhacloud_piranha-naming \
-        -Dsonar.organization=piranha_cloud -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.organization=piranhacloud -Dsonar.host.url=https://sonarcloud.io \
         -Dsonar.login=${{ secrets.SONAR_TOKEN }}   
