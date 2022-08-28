@@ -1,7 +1,8 @@
 
-# Piranha Naming - Thread
+# Piranha Naming Thread
 
-The Piranha Naming - Thread module delivers you with ThreadLocal JNDI implementation.
+The Piranha Naming Thread module delivers you with Thread based JNDI
+implementation.
 
 Add the following dependency to your project to use it.
 
@@ -19,6 +20,3 @@ or programmatically set it:
 
       System.getProperties().put("java.naming.factory.initial", 
         "cloud.piranha.naming.thread.ThreadInitialContextFactory");
-
-Note that this example does not set the &lt;scope&gt; but depending on what you
-are using Piranha Naming - THread for you might need to add a &lt;scope&gt;.

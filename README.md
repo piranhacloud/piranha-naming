@@ -12,7 +12,8 @@ The Piranha Naming Project delivers you with a JNDI implementation.
 ## How do I use it?
 
 See [Piranha Naming Implementation README](impl/README.md) for more 
-information on how to use the default implementation.
+information on how to use the default implementation, or the 
+[Piranha Naming Thread README](thread/README.md) for the Thread implementation.
 
 ## How do I contribute?
 
