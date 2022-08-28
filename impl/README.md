@@ -1,7 +1,8 @@
 
 # Piranha Naming Implementation 
 
-The Piranha Naming Implementation module delivers you with JNDI implementation.
+The Piranha Naming Implementation module delivers you with a JNDI 
+implementation.
 
 Add the following dependency to your project to use it.
 
@@ -19,6 +20,3 @@ or programmatically set it:
 
       System.getProperties().put("java.naming.factory.initial", 
         "cloud.piranha.naming.impl.DefaultInitialContextFactory");
-
-Note that this example does not set the &lt;scope&gt; but depending on what you
-are using Piranha Naming for you might need to add a &lt;scope&gt;.
