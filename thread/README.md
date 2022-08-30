@@ -1,7 +1,7 @@
 
 # Piranha Naming Thread
 
-The Piranha Naming Thread module delivers you with Thread based JNDI
+The Piranha Naming Thread module delivers you with a Thread based JNDI
 implementation.
 
 Add the following dependency to your project to use it.
