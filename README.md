@@ -1,3 +1,4 @@
+_This project is deprecated and has been rolled into the Piranha project. Note this project will be archived on Dec 13th and removed on Jan 13th_
 
 # Piranha Naming Project
 
